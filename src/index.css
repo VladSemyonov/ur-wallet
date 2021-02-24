@@ -1,0 +1,54 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.add-form {
+    display: inline-flex;
+    max-width: 1000px;
+}
+
+.description input {
+    width: 600px;
+}
+
+.summary-div {
+    display: inline-flex;
+    width: 1000px;
+    justify-content: space-between;
+}
+
+.column {
+    margin-right: 20px;
+}
+
+.purchase-list-item {
+    display: inline-flex;
+    margin-top: 20px;
+}
+
+.purchase-list-item div {
+    margin-right: 40px
+}
+
+.item-date {
+    width: 140px;
+}
+
+.item-description {
+    width: 300px;
+}
+
+.item-collection {
+    width: 100px;
+}
+
+.item-price {
+    display: inline-flex;
+    width: 100px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
