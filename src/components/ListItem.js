@@ -1,10 +1,18 @@
 import React from "react";
 
-export default function ListItem({item}) {
+export default function ListItem({item, index}) {
+
+    const collectionName = {
+        ways: 'покупки',
+        workEat: 'еда на работе',
+        drunkEat: "бухалово и гульки",
+        buys: "покупки",
+        services: "услуги и здоровье"
+    }
 
     return (
-        <div>
-            <div className={'purchase-list-item'}>
+        <div className={index % 2 === 0 && 'greyback'}>
+            <div className={`purchase-list-item`}>
                 <div className={'item-date'}>
                     {item.date}
                 </div>
@@ -12,7 +20,7 @@ export default function ListItem({item}) {
                     {item.description}
                 </div>
                 <div className={'item-collection'}>
-                    {item.collection}
+                    {collectionName[item.collection]}
                 </div>
                 <div className={'item-price'}>
                     {item.price + ' грн'}

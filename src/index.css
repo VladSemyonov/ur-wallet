@@ -3,19 +3,36 @@
     margin: 0;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input{
+    outline: none;
+}
+
+button:focus, :active { outline-style: none; }
+
 .add-form {
+    margin: 20px auto;
     display: inline-flex;
     max-width: 1000px;
 }
 
 .description input {
-    width: 600px;
+    width: 550px;
+    border: 1px solid black;
+    height: 30px;
+    margin-right: 5px;
 }
 
 .summary-div {
     display: inline-flex;
     width: 1000px;
     justify-content: space-between;
+    border: black solid 3px;
+    padding: 4px 5px;
 }
 
 .column {
@@ -24,11 +41,13 @@
 
 .purchase-list-item {
     display: inline-flex;
-    margin-top: 20px;
+    margin: 10px 10px;
 }
 
 .purchase-list-item div {
-    margin-right: 40px
+    display: flex;
+    margin-right: 40px;
+    align-items: center
 }
 
 .item-date {
@@ -36,11 +55,11 @@
 }
 
 .item-description {
-    width: 300px;
+    width: 400px;
 }
 
 .item-collection {
-    width: 100px;
+    width: 150px;
 }
 
 .item-price {
@@ -50,5 +69,37 @@
 
 .container {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto;
+}
+
+.greyback{
+    background-color: grey;
+    color: white;
+}
+
+.secondary{
+    text-align: center;
+}
+
+.inselect{
+    border-radius: 0;
+    margin-right: 5px;
+    height: 30px;
+}
+
+.innumber{
+    border: 1px solid black;
+    margin-right: 5px;
+    height: 30px;
+}
+
+.btn button{
+    background-color: lime;
+    width: 100px;
+    height: 30px;
+    border: 0;
+}
+
+.btn{
+    padding: 0;
 }

@@ -17,13 +17,9 @@ export default function App() {
         }
     }), [])
 
-    function addDoc(er) {
-        db.insert(er)
-    }
-
     return (
         <div className={'container'}>
-            <NewData submit={addDoc}/>
+            <NewData submit={(i)=>db.insert(i)}/>
             <SummaryBuys props={properts}/>
             <PurchaseList props={properts}/>
         </div>

@@ -28,7 +28,7 @@ export default function NewData({submit}) {
     return (
         <form className="add-form">
             <div>
-                <select className=""
+                <select className="inselect"
                         name="select"
                         onChange={changeValue(collection, setCollection)}>
                     <option value="workEat">еда на работе</option>
@@ -39,7 +39,8 @@ export default function NewData({submit}) {
                 </select>
             </div>
             <div className="">
-                <input type="text"
+                <input className={'innumber'}
+                        type="number"
                        value={price}
                        placeholder="стоимость"
                        onChange={changeValue(price, setPrice)}/>
@@ -50,7 +51,7 @@ export default function NewData({submit}) {
                        placeholder="описание"
                        onChange={changeValue(description, setDescription)}/>
             </div>
-            <div className="">
+            <div className="btn">
                 <button onClick={dataSubmit} type="submit">добавить</button>
             </div>
         </form>
