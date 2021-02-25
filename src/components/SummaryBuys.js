@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
 export default function SummaryBuys(props) {
-    debugger
 
     const [monthData, setMonthData] = useState([])
     const [allData, setAllData] = useState([])
@@ -13,11 +12,7 @@ export default function SummaryBuys(props) {
     }, [props])
 
     function getSum(arr) {
-        let sum = 0
-        for (let item of arr) {
-            sum += Number(item.price)
-        }
-        return sum
+        return arr.reduce((accumulator, value) => accumulator + Number(value), 0)
     }
 
     return (

@@ -52,7 +52,7 @@ export default function NewData({submit}) {
                        onChange={changeValue(description, setDescription)}/>
             </div>
             <div className="btn">
-                <button onClick={dataSubmit} type="submit">добавить</button>
+                <button disabled={(price.length && description.length) === 0} onClick={dataSubmit} type="submit">добавить</button>
             </div>
         </form>
     )
