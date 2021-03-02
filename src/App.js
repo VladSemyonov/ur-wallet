@@ -31,6 +31,7 @@ export default function App() {
     function deleteItem(item) {
         db.remove({_id: item})
         startDb()
+        getSums()
     }
 
     async function startDb() {
