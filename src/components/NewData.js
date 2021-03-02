@@ -6,8 +6,8 @@ export default function NewData({collections, submit}) {
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
     const [collectionValues, setCollectionValues] = useState([])
-    console.log(collections)
-    useEffect(()=>{
+
+    useEffect(() => {
         setCollectionValues(collections)
     }, [collections])
 
@@ -40,7 +40,9 @@ export default function NewData({collections, submit}) {
                 <select className="inselect"
                         name="select"
                         onChange={changeValue(collection, setCollection)}>
-                    {collectionValues && collectionValues.map((item, i) => <option value={item.collection} key={i}>{item.collection}</option>) }
+                    <option value={''}>Выбери категорию</option>
+                    {collectionValues && collectionValues.map((item, i) => <option value={item.collection}
+                                                                                   key={i}>{item.collection}</option>)}
                 </select>
             </div>
             <div className="">
@@ -57,7 +59,7 @@ export default function NewData({collections, submit}) {
                        onChange={changeValue(description, setDescription)}/>
             </div>
             <div className="btn">
-                <button disabled={(price.length && description.length) === 0} onClick={dataSubmit}
+                <button disabled={(price.length && description.length && collection.length) === 0} onClick={dataSubmit}
                         type="submit">добавить
                 </button>
             </div>

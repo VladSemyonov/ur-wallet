@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function SummaryItem({item}) {
 
-    return(
+    return (
         <div className="column secondary">
             <div><h6>{item.collection}</h6></div>
             <div><h6>{item.monthPrice}</h6></div>

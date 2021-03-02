@@ -6,7 +6,7 @@ export default function PurchaseList({items, deleteI}) {
     const [list, setList] = useState([])
 
     useEffect(() => {
-        setList(items.sort((a, b)=> a.filterDate < b.filterDate ? 1 : -1))
+        setList(items.sort((a, b) => a.filterDate < b.filterDate ? 1 : -1))
     }, [items])
 
     return (

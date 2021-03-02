@@ -18,7 +18,7 @@ export default function App() {
     useEffect(() => {
         startDb()
     }, [])
-    console.log(collections)
+
     useEffect(() => {
         getSums()
     }, [collections, properts])
@@ -28,8 +28,8 @@ export default function App() {
         startDb()
     }
 
-    async function deleteItem(item) {
-        await db.remove({_id: item})
+    function deleteItem(item) {
+        db.remove({_id: item})
         startDb()
     }
 
@@ -73,7 +73,8 @@ export default function App() {
 
     function changeItem(item) {
         console.log('change item', item)
-        db.update({ _id : item._id}, {$set: {collection: item.collection}})
+        db.update({_id: item._id}, {$set: {collection: item.collection}})
+        db.update({collectionName: item.prev}, {$set: {collectionName: item.collection}})
         startDb()
     }
 
@@ -84,10 +85,12 @@ export default function App() {
     return (
         <div className={'container'}>
             <button style={{width: 'inherit'}} onClick={toggleForm}>изменить список категорий</button>
-            <NewData сollections={collections} submit={addItem}/>
+            <NewData collections={collections} submit={addItem}/>
             <SummaryBuys collections={collections} items={sums}/>
             <PurchaseList deleteI={deleteItem} items={properts}/>
-            {form && <CollectionsList toggle={toggleForm} addItem={addItem} changeItem={changeItem} deleteCollection={deleteItem} collections={collections}/>}
+            {form &&
+            <CollectionsList toggle={toggleForm} addItem={addItem} changeItem={changeItem} deleteCollection={deleteItem}
+                             collections={collections}/>}
         </div>
     )
 }
