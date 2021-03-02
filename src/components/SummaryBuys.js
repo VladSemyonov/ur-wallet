@@ -1,18 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
+import SummaryItem from "./SummaryItem";
 
-export default function SummaryBuys(props) {
+export default function SummaryBuys({items}) {
 
-    const [monthData, setMonthData] = useState([])
-    const [allData, setAllData] = useState([])
-
-    useEffect(() => {
-        let thisMonth = new Date()
-        setMonthData(props.props.filter(i => i.month === thisMonth.getMonth()))
-        setAllData(props.props)
-    }, [props])
-
-    function getSum(arr) {
-        return arr.reduce((accumulator, value) => accumulator + Number(value), 0)
+    function getSummary(arr, col) {
+        let sum = 0
+        for(let i of arr){
+            sum += i[col]
+        }
+        return sum
     }
 
     return (
@@ -22,35 +18,11 @@ export default function SummaryBuys(props) {
                 <div><h6>за текущий месяц</h6></div>
                 <div><h6>за всё время</h6></div>
             </div>
-            <div className="column secondary">
-                <div><h6>еда на работе</h6></div>
-                <div><h6>{getSum(monthData.filter(i => i.collection === 'workEat'))}</h6></div>
-                <div><h6>{getSum(allData.filter(i => i.collection === 'workEat'))}</h6></div>
-            </div>
-            <div className="column secondary">
-                <div><h6>бухалово и гульки</h6></div>
-                <div><h6>{getSum(monthData.filter(i => i.collection === 'drunkEat'))}</h6></div>
-                <div><h6>{getSum(allData.filter(i => i.collection === 'drunkEat'))}</h6></div>
-            </div>
-            <div className={'column secondary'}>
-                <div><h6>еда</h6></div>
-                <div><h6>{getSum(monthData.filter(i => i.collection === 'ways'))}</h6></div>
-                <div><h6>{getSum(allData.filter(i => i.collection === 'ways'))}</h6></div>
-            </div>
-            <div className={'column secondary'}>
-                <div><h6>покупки</h6></div>
-                <div><h6>{getSum(monthData.filter(i => i.collection === 'buys'))}</h6></div>
-                <div><h6>{getSum(allData.filter(i => i.collection === 'buys'))}</h6></div>
-            </div>
-            <div className={'column secondary'}>
-                <div><h6>услуги и здоровье</h6></div>
-                <div><h6>{getSum(monthData.filter(i => i.collection === 'services'))}</h6></div>
-                <div><h6>{getSum(allData.filter(i => i.collection === 'services'))}</h6></div>
-            </div>
+            {items.map((i, index)=> <SummaryItem key={index} item={i}/>)}
             <div className={'column'}>
                 <div><h6>всего</h6></div>
-                <div><h6>{getSum(monthData)}</h6></div>
-                <div><h6>{getSum(allData)}</h6></div>
+                <div><h6>{getSummary(items, 'monthPrice')}</h6></div>
+                <div><h6>{getSummary(items, 'totalPrice')}</h6></div>
             </div>
         </div>
     )

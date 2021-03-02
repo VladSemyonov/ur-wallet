@@ -1,6 +1,20 @@
 {
   "name": "test_work",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "main": "electron.js",
+  "homepage": "./",
+  "build": {
+    "appId": "com.example.electron-cra",
+    "icon": "build/icon.gif",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "productName": "Ur Wallet",
   "dependencies": {
     "nedb": "^1.8.0",
     "react": "^16.14.0",
@@ -10,13 +24,20 @@
     "reactstrap": "^8.9.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set BROWSER=none && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "build/electron .",
+    "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && build/electron .",
+    "pack": "electron-builder build -w --x64",
+    "build-electron": "mkdir build/src && robocopy build/electron src /S",
+    "electron-pack": "electron-builder build --win -c.extraMetadata.main=build/electron/main.js --publish never"
   },
   "devDependencies": {
-    "@testing-library/react": "^9.5.0"
+    "@testing-library/react": "^9.5.0",
+    "electron": "^11.3.0",
+    "electron-builder": "^22.9.1"
   },
   "browserslist": {
     "production": [

@@ -1,21 +1,30 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
-export default function NewData({submit}) {
+export default function NewData({collections, submit}) {
 
-    const [collection, setCollection] = useState('workEat')
+    const [collection, setCollection] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
+    const [collectionValues, setCollectionValues] = useState([])
+    console.log(collections)
+    useEffect(()=>{
+        setCollectionValues(collections)
+    }, [collections])
 
-    function dataSubmit() {
+    function dataSubmit(e) {
+        e.preventDefault()
         let date = new Date()
         let addData = {
-            collection: collection,
+            collectionName: collection,
             price: price,
             description: description,
             month: date.getMonth(),
-            date: date.toLocaleString()
+            date: date.toLocaleString(),
+            filterDate: Date.now()
         }
         submit(addData)
+        setPrice('')
+        setDescription('')
     }
 
     const changeValue = (data, fn) => ({target}) => {
@@ -31,16 +40,12 @@ export default function NewData({submit}) {
                 <select className="inselect"
                         name="select"
                         onChange={changeValue(collection, setCollection)}>
-                    <option value="workEat">еда на работе</option>
-                    <option value="drunkEat">бухалово и гульки</option>
-                    <option value="ways">еда</option>
-                    <option value="buys">покупки</option>
-                    <option value="services">услуги и здоровье</option>
+                    {collectionValues && collectionValues.map((item, i) => <option value={item.collection} key={i}>{item.collection}</option>) }
                 </select>
             </div>
             <div className="">
                 <input className={'innumber'}
-                        type="number"
+                       type="number"
                        value={price}
                        placeholder="стоимость"
                        onChange={changeValue(price, setPrice)}/>
@@ -52,7 +57,9 @@ export default function NewData({submit}) {
                        onChange={changeValue(description, setDescription)}/>
             </div>
             <div className="btn">
-                <button disabled={(price.length && description.length) === 0} onClick={dataSubmit} type="submit">добавить</button>
+                <button disabled={(price.length && description.length) === 0} onClick={dataSubmit}
+                        type="submit">добавить
+                </button>
             </div>
         </form>
     )
