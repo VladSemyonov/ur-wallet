@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react'
 export default function CollectionForm({props, addItem, changeItem}) {
 
     const [collectionValue, setCollection] = useState({collection: ''})
-    console.log(props, collectionValue)
 
     useEffect(() => {
         if (props)
@@ -15,7 +14,6 @@ export default function CollectionForm({props, addItem, changeItem}) {
     }
 
     function setData() {
-        console.log(collectionValue.collection.hasOwnProperty("_id"))
         if (collectionValue.hasOwnProperty("_id")) {
             changeItem(collectionValue)
         } else {
@@ -25,11 +23,14 @@ export default function CollectionForm({props, addItem, changeItem}) {
 
     return (
         <form className={"collection-form"}>
-            <div>
+            <div className={'add-form-div'}>
                 <input type={'text'}
                        name={'collection'}
                        onChange={changeValue}
-                       value={collectionValue.collection}/>
+                       value={collectionValue.collection}
+                        className={'innumber'}/>
+            </div>
+            <div className={'add-form-div'}>
                 <button type={'button'}
                         onClick={setData}>Сохранить
                 </button>

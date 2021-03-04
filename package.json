@@ -1,11 +1,11 @@
 {
   "name": "test_work",
   "version": "1.0.0",
-  "main": "electron.js",
+  "main": "electron/electron.js",
   "homepage": "./",
   "build": {
     "appId": "com.example.electron-cra",
-    "icon": "build/icon.gif",
+    "icon": "src/img/icon.gif",
     "files": [
       "build/**/*",
       "node_modules/**/*"

@@ -1,7 +1,13 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import SummaryItem from "./SummaryItem";
 
-export default function SummaryBuys({items}) {
+export default function SummaryBuys({item}) {
+
+    const [items, setItems] = useState([])
+
+    useEffect(()=>{
+        setItems(item)
+    }, [item])
 
     function getSummary(arr, col) {
         let sum = 0
@@ -19,7 +25,7 @@ export default function SummaryBuys({items}) {
                 <div><h6>за всё время</h6></div>
             </div>
             <div className={'auto-div'}>
-            {items.map((i, index) => <SummaryItem key={index} item={i}/>)}
+                {items.map((i, index) => <SummaryItem key={index} item={i}/>)}
             </div>
             <div className={'column'}>
                 <div><h6>всего</h6></div>

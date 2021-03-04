@@ -21,7 +21,7 @@ export default function App() {
 
     useEffect(() => {
         getSums()
-    }, [collections, properts])
+    }, [collections])
 
     async function addItem(item) {
         await db.insert(item)
@@ -67,12 +67,18 @@ export default function App() {
                     }
                 }
             }
+            else {
+                for (let i of sum) {
+                    if (collectionName === i.collection) {
+                        i.totalPrice += Number(price)
+                    }
+                }
+            }
             setSums(sum)
         }
     }
 
     function changeItem(item) {
-        console.log('change item', item)
         db.update({_id: item._id}, {$set: {collection: item.collection}})
         db.update({collectionName: item.prev}, {$set: {collectionName: item.collection}})
         startDb()
@@ -84,9 +90,11 @@ export default function App() {
 
     return (
         <div className={'container'}>
-            <button style={{width: 'inherit'}} onClick={toggleForm}>изменить список категорий</button>
+            <div className={'indiv'} style={{width: 'inherit'}}>
+            <button className={'but3'} onClick={toggleForm}>изменить список категорий</button>
+            </div>
             <NewData collections={collections} submit={addItem}/>
-            <SummaryBuys collections={collections} items={sums}/>
+            <SummaryBuys collections={collections} item={sums}/>
             <PurchaseList deleteI={deleteItem} items={properts}/>
             {form &&
             <CollectionsList toggle={toggleForm} addItem={addItem} changeItem={changeItem} deleteCollection={deleteItem}
