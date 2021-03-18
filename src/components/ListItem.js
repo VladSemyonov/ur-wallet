@@ -1,10 +1,13 @@
 import React from "react";
-import inage from '../img/delete.gif'
 
 export default function ListItem({item, deleteI, index}) {
 
     function getClass(num) {
         if (num % 2 === 0) return 'greyback'
+    }
+
+    function getClass1(num) {
+        if (num % 2 === 0) return 'blackback'
     }
 
     return (
@@ -23,10 +26,10 @@ export default function ListItem({item, deleteI, index}) {
                     {item.price + ' грн'}
                 </div>
                 <div style={{marginRight: "0"}}>
-                    <button onClick={() => {
+                    <button
+                            onClick={() => {
                         deleteI(item._id)
-                    }} className={'danger-btn'}>
-                        <img style={{width: '30px'}} src={inage}/>
+                    }} className={`danger-btn ${getClass1(index)}`}>X
                     </button>
                 </div>
             </div>

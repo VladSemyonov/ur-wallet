@@ -9,6 +9,10 @@
     font-family: 'BalsamiqSans';
 }
 
+li {
+    list-style: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -81,6 +85,7 @@ button:focus, :active {
 .purchase-list-item {
     display: inline-flex;
     margin: 10px 0;
+    height: 40px;
 }
 
 .purchase-list-item div {
@@ -131,7 +136,7 @@ button:focus, :active {
     background: none;
 }
 
-.inselect option{
+.inselect option {
     color: black;
 }
 
@@ -163,17 +168,18 @@ button:focus, :active {
 }
 
 .danger-btn {
+    width: 30px;
+    height: 30px;
     background: none;
-    border: 0;
-    color: red;
-    font-weight: bold;
-    font-size: 20px;
-    opacity: .6;
+    border-radius: 4px;
+    border: 2px solid white;
+    color: white;
+    font-weight: bold
 }
 
-.danger-btn:hover {
-    opacity: 1;
-    transition: 0.2s;
+.blackback {
+    border-color: black;
+    color: black;
 }
 
 .some-list {
@@ -211,7 +217,7 @@ button:focus, :active {
     z-index: 7;
 }
 
-.close:hover{
+.close:hover {
     color: white;
 }
 
@@ -220,7 +226,7 @@ button:focus, :active {
     top: 0;
     left: 0;
     width: 100%;
-    height: 90%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
 }
@@ -261,18 +267,18 @@ button:focus, :active {
     width: 150px;
 }
 
-.auto-div{
+.auto-div {
     display: flex;
     width: 700px;
     justify-content: space-between;
     overflow: auto;
 }
 
-.auto-div div{
+.auto-div div {
     margin-right: 10px;
 }
 
-.collection-form{
+.collection-form {
     display: flex;
     justify-content: space-between;
     position: absolute;
@@ -286,17 +292,17 @@ button:focus, :active {
     padding: 5px 10px;
 }
 
-.collection-form div{
+.collection-form div {
     background: black;
 }
 
-.collection-form input{
+.collection-form input {
     width: 250px;
     height: 30px;
     margin: 0;
 }
 
-.collection-form button{
+.collection-form button {
     width: 120px;
     height: 30px;
     background: none;
@@ -305,56 +311,120 @@ button:focus, :active {
     transition: .4s;
 }
 
-.collection-form button:hover{
+.collection-form button:hover {
     background: rgba(255, 255, 255, .2);
     cursor: pointer;
 }
 
 .but3 {
     width: calc(100% - 4px);
-    height: 45px;
+    height: 30px;
     color: white;
     background: transparent;
     font-weight: bold;
     text-decoration: none;
     user-select: none;
     outline: none;
-    border: 5px solid;
+    border: 1px solid;
     border-color: white;
     border-radius: 0;
     background-repeat: no-repeat;
     background-size: 300% 100%;
     background-position: 0 0;
-    box-shadow: 0 0 7px 1px white;
+
 }
 
 .but3:hover {
-    background-image:
-            linear-gradient(to right, rgba(200,200,200, .4), rgba(255,255,255,.4), rgba(125,125,125,.4));
-    transition: .5s linear;
+    background-image: linear-gradient(to right, rgba(200, 200, 200, .4), rgba(255, 255, 255, .4), rgba(125, 125, 125, .4));
+    transition: .2s linear;
     background-position: 100% 100%;
     box-shadow: 0 0 10px 2px white;
     cursor: pointer;
+
 }
 
 .indiv.but3:active {
     top: 1px;
 }
 
-.add-form-div{
+.indiv {
+    width: 50%;
+}
+
+.add-form-div {
     height: 30px;
 }
 
-.add-form-div input{
+.add-form-div input {
     height: 26px;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 10px;
-    background-color: none;
+    background: none;
     border: 2px solid white;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background-color: white;
+}
+
+.selector {
+    position: relative;
+    display: block;
+    top: 165px;
+    left: 0;
+    cursor: pointer;
+    background-color: rgba(10, 10, 10, .9);
+    border: 2px solid white;
+    padding: 10px 5px;
+    width: 250px;
+}
+
+.selector li:hover {
+    box-shadow: 0 0 4px 2px white;
+}
+
+.selector li {
+    margin: 5px 0;
+}
+
+#check-collection {
+    position: absolute;
+    width: 150px;
+    height: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    cursor: pointer;
+}
+
+#check-collection:hover {
+    box-shadow: 0 0 4px 2px white;
+}
+
+#check-collection p {
+    margin: 0;
+}
+
+#check-collection img {
+    width: 18px;
+    height: 18px;
+}
+
+.stats-div {
+    padding: 3px;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    height: 35px;
+    margin: 14px auto;
+    width: 700px;
+}
+
+.stats-div:hover {
+    cursor: pointer;
+    box-shadow: 0 0 7px 4px white;
 }

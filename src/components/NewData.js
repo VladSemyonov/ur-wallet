@@ -1,15 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {Context} from "../App";
 
-export default function NewData({collections, submit}) {
+export default function NewData({submit}) {
 
+    const {categories} = useContext(Context)
     const [collection, setCollection] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
-    const [collectionValues, setCollectionValues] = useState([])
-
-    useEffect(() => {
-        setCollectionValues(collections)
-    }, [collections])
 
     function dataSubmit(e) {
         e.preventDefault()
@@ -41,8 +38,8 @@ export default function NewData({collections, submit}) {
                         name="select"
                         onChange={changeValue(collection, setCollection)}>
                     <option value={''}>Выбери категорию</option>
-                    {collectionValues && collectionValues.map((item, i) => <option value={item.collection}
-                                                                                   key={i}>{item.collection}</option>)}
+                    {categories && categories.map((item, i) => <option value={item.collection}
+                                                                       key={i}>{item.collection}</option>)}
                 </select>
             </div>
             <div className="">

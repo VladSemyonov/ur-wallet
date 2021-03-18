@@ -16,8 +16,11 @@
   },
   "productName": "Ur Wallet",
   "dependencies": {
+    "@reactchartjs/react-chart.js": "^1.0.0-rc.3",
+    "chart.js": "^2.9.4",
     "nedb": "^1.8.0",
     "react": "^16.14.0",
+    "react-chartjs-2": "^2.11.1",
     "react-dom": "^16.14.0",
     "react-scripts": "3.4.0"
   },
@@ -35,7 +38,8 @@
   "devDependencies": {
     "@testing-library/react": "^9.5.0",
     "electron": "^11.3.0",
-    "electron-builder": "^22.9.1"
+    "electron-builder": "^22.9.1",
+    "react-router-dom": "^5.2.0"
   },
   "browserslist": {
     "production": [

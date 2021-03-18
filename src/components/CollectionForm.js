@@ -28,7 +28,7 @@ export default function CollectionForm({props, addItem, changeItem}) {
                        name={'collection'}
                        onChange={changeValue}
                        value={collectionValue.collection}
-                        className={'innumber'}/>
+                       className={'innumber'}/>
             </div>
             <div className={'add-form-div'}>
                 <button type={'button'}
