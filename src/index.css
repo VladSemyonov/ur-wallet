@@ -42,7 +42,7 @@ button:focus, :active {
     background: none;
     width: 590px;
     border: 2px solid white;
-    height: 30px;
+    height: 26px;
     margin-right: 5px;
     color: white;
 }
@@ -144,7 +144,7 @@ button:focus, :active {
     background: none;
     border: 2px solid white;
     margin-right: 5px;
-    height: 30px;
+    height: 26px;
     width: 120px;
     color: white
 }
@@ -177,12 +177,24 @@ button:focus, :active {
     font-weight: bold
 }
 
+.whiteback:hover{
+    background: rgba(255, 255, 255, .2);
+    cursor: pointer;
+}
+
 .blackback {
     border-color: black;
     color: black;
 }
 
+.blackback:hover{
+    background: rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
 .some-list {
+    margin: 0 auto;
+    width: 980px;
     height: 400px;
     overflow: auto;
     color: white
@@ -370,15 +382,15 @@ button:focus, :active {
 }
 
 .selector {
-    position: relative;
     display: block;
-    top: 165px;
+    top: calc(100% + 10px);
     left: 0;
+    position: absolute;
     cursor: pointer;
     background-color: rgba(10, 10, 10, .9);
     border: 2px solid white;
     padding: 10px 5px;
-    width: 250px;
+    width: 180px;
 }
 
 .selector li:hover {
@@ -390,7 +402,6 @@ button:focus, :active {
 }
 
 #check-collection {
-    position: absolute;
     width: 150px;
     height: 20px;
     padding: 10px;

@@ -8,6 +8,7 @@ export default function ListItem({item, deleteI, index}) {
 
     function getClass1(num) {
         if (num % 2 === 0) return 'blackback'
+        else return 'whiteback'
     }
 
     return (

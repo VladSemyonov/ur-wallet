@@ -1,6 +1,8 @@
 {
   "name": "test_work",
   "version": "1.0.0",
+  "description": "manage your cash with 'Ur Wallet' application",
+  "author": "Vlad <vladsemyonov95@ukr.net> Semenyov",
   "main": "electron/electron.js",
   "homepage": "./",
   "build": {
@@ -29,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron": "build/electron .",
+    "electron": "electron .",
     "electron-dev": "set ELECTRON_START_URL=http://localhost:3000 && build/electron .",
     "pack": "electron-builder build -w --x64",
     "build-electron": "mkdir build/src && robocopy build/electron src /S",

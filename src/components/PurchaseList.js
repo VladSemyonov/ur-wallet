@@ -11,7 +11,9 @@ function PurchaseList({deleteI}) {
     const [filteredItems, setFilteredItems] = useState([])
     const [category, setCategory] = useState('Категория')
 
-    useEffect(() => {setList(purchases.sort((a, b) => a.filterDate < b.filterDate ? 1 : -1))}, [])
+    useEffect(() => {
+        setList(purchases.sort((a, b) => a.filterDate < b.filterDate ? 1 : -1))
+    }, [purchases])
 
     function sortByCollection(e) {
         let content = e.target.textContent
@@ -24,9 +26,8 @@ function PurchaseList({deleteI}) {
     }
 
     return (
-
         <div className={'container'}>
-            <div style={{color: 'white'}} className={`purchase-list-item`}>
+            <div style={{color: 'white', marginLeft: '30px'}} className={`purchase-list-item`}>
                 <div className={'item-date'}>
                     Дата
                 </div>
@@ -34,18 +35,19 @@ function PurchaseList({deleteI}) {
                     Описание
                 </div>
                 <div className={'item-collection'}>
-                    {showList && <ul className={'selector'}>
-                        <li style={{boxShadow: '0 0 4px 2px white'}} onClick={sortByCollection}
-                        >Выбери категорию
-                        </li>
-                        {categories.map((i, index) => <li key={index} onClick={sortByCollection}
-                        >{i.collection}</li>)}
-                    </ul>}
-                    <div onClick={toggleList} id={'check-collection'}>
-                        <p>{category}</p>
-                        <img alt={'icon'} src={icon}/>
+                    <div style={{position: 'relative'}} onClick={toggleList} className={'hiden-menu'}>
+                        <div id={'check-collection'}>
+                            <p>{category}</p>
+                            <img alt={'icon'} src={icon}/>
+                        </div>
+                        {showList && <ul className={'selector'}>
+                            <li style={{boxShadow: '0 0 4px 2px white'}} onClick={sortByCollection}
+                            >Выбери категорию
+                            </li>
+                            {categories.map((i, index) => <li key={index} onClick={sortByCollection}
+                            >{i.collection}</li>)}
+                        </ul>}
                     </div>
-
                 </div>
                 <div className={'item-price'}>
                     Ценна
@@ -54,7 +56,7 @@ function PurchaseList({deleteI}) {
             <div className='some-list'>
                 {filteredItems.length > 0
                     ? filteredItems.map((i, index) => <ListItem deleteI={deleteI} index={index} key={index} item={i}/>)
-                    : purchases.map((i, index) => <ListItem deleteI={deleteI} index={index} key={index} item={i}/>)}
+                    : list.map((i, index) => <ListItem deleteI={deleteI} index={index} key={index} item={i}/>)}
             </div>
         </div>
     )
