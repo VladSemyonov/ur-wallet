@@ -2,12 +2,12 @@
   "name": "test_work",
   "version": "1.0.0",
   "description": "manage your cash with 'Ur Wallet' application",
-  "author": "Vlad <vladsemyonov95@ukr.net> Semenyov",
+  "author": "Vlad Semenyov",
   "main": "electron/electron.js",
   "homepage": "./",
   "build": {
     "appId": "com.example.electron-cra",
-    "icon": "src/img/icon.gif",
+    "icon": "src/icon.gif",
     "files": [
       "build/**/*",
       "node_modules/**/*"
@@ -41,7 +41,8 @@
     "@testing-library/react": "^9.5.0",
     "electron": "^11.3.0",
     "electron-builder": "^22.9.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "typescript": "^4.3.2"
   },
   "browserslist": {
     "production": [
