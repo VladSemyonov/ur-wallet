@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext, FC } from "react";
 import { Context } from "../App";
 import ListItem from "./ListItem";
 import icon from "../img/list-arrow.gif";
-import NewData from "./NewData";
 
 interface ItemList {
   collectionName: string;

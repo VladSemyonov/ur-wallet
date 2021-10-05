@@ -9,6 +9,7 @@ interface NewData {
   month: number;
   date: string;
   filterDate: number;
+  _id?: string;
 }
 
 interface PropsItem {

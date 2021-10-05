@@ -10,12 +10,12 @@ interface MainProps {
   deleteItem: (item: NewData) => void;
 }
 
-const Main: FunctionComponent<MainProps> = ({ addItem, sums, deleteItem }) => {
+const Main: FunctionComponent<MainProps> = ({ addItem, sums }) => {
   return (
     <div>
       <NewData submit={addItem} />
       <SummaryBuys item={sums} />
-      <PurchaseList deleteI={deleteItem} />
+      <PurchaseList />
     </div>
   );
 };

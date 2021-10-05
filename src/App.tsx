@@ -95,7 +95,7 @@ function App() {
     }
   }
 
-  function changeItem(item: DataItem): void {
+  function changeItem(item: CollectionItem): void {
     db.update({ _id: item._id }, { $set: { collection: item.collection } });
     db.update(
       { collectionName: item.prev },
@@ -109,8 +109,8 @@ function App() {
     setForm(!form);
   }
 
-  const chooseMonth = (i) => {
-    let sum = [];
+  const chooseMonth = (i: number) => {
+    let sum: CollectionItem[] = [];
     let arr = properts.filter((item) => item.month === i);
     for (const { collection } of collections) {
       sum = [

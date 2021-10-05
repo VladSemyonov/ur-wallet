@@ -10,8 +10,10 @@ export interface DataItem {
 
 export interface CollectionItem {
   collection: string;
-  monthPrice: number;
+  monthPrice?: number;
   totalPrice: number;
+  prev?: string;
+  _id?: string;
 }
 
 export interface AppContextProps {

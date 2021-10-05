@@ -47,3 +47,5 @@ const ListItem: FunctionComponent<ListItemProps> = ({ item, index }) => {
     </div>
   );
 };
+
+export default ListItem;
