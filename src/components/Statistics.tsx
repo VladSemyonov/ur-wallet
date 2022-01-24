@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
+import { observer } from "mobx-react";
 
 const initObj: Results = {
   0: 0,
@@ -56,30 +57,30 @@ const months: MonthArr = [
   "декабрь",
 ];
 
-export default function Statistics(props: any) {
+const Statistics: any = observer(() => {
   const [data, setData] = useState<Results>(initObj);
 
-  useEffect(() => {
-    let res: Results = {
-      0: 0,
-      1: 0,
-      2: 0,
-      3: 0,
-      4: 0,
-      5: 0,
-      6: 0,
-      7: 0,
-      8: 0,
-      9: 0,
-      10: 0,
-      11: 0,
-    };
-    for (let item of props.items) {
-      const { price, month }: { price: number; month: number } = item;
-      initObj[month] += Number(price);
-    }
-    setData(res);
-  }, [props]);
+  // useEffect(() => {
+  //   let res: Results = {
+  //     0: 0,
+  //     1: 0,
+  //     2: 0,
+  //     3: 0,
+  //     4: 0,
+  //     5: 0,
+  //     6: 0,
+  //     7: 0,
+  //     8: 0,
+  //     9: 0,
+  //     10: 0,
+  //     11: 0,
+  //   };
+  //   for (let item of props.items) {
+  //     const { price, month }: { price: number; month: number } = item;
+  //     initObj[month] += Number(price);
+  //   }
+  //   setData(res);
+  // }, [props]);
 
   const createData = (obj: Results): MonthObj[] => {
     let resultArr: MonthObj[] = [];
@@ -102,6 +103,10 @@ export default function Statistics(props: any) {
   };
 
   return (
-    <div>{createData(data).map((item, index) => createDiv(item, index))}</div>
+    <div>
+      <h1>{secs.secs}</h1>
+      {/* {createData(data).map((item, index) => createDiv(item, index))} */}
+    </div>
   );
-}
+});
+export default Statistics;

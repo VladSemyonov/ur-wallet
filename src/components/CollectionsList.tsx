@@ -38,7 +38,13 @@ const CollectionsList: FunctionComponent = () => {
 
   return (
     <div id={"block"}>
-      {showForm && <CollectionForm props={initialData} />}
+      {showForm && (
+        <CollectionForm
+          props={initialData}
+          addItem={() => console.log("dsd")}
+          changeItem={() => console.log("dsd")}
+        />
+      )}
       <div className={"collection-div"}>
         <button className={"close"} onClick={() => toggle()}>
           X
@@ -51,7 +57,7 @@ const CollectionsList: FunctionComponent = () => {
             </button>
           </div>
           <div style={{ overflow: "auto", height: "400px" }}>
-            {collections.map((i, index) => (
+            {collections.map((i: any, index: number) => (
               <div key={index} className={"center-div"}>
                 <h6 className={"header"}>{i.collection}</h6>
                 <button onClick={() => editCollection(i)}>

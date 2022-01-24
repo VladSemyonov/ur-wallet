@@ -8,8 +8,9 @@ import Main from "./components/Main";
 import Diagrams from "./components/Diagrams";
 import { AppContextProps, DataItem } from "./types/common";
 import { CollectionItem } from "./types/common";
+import { makeAutoObservable } from "mobx";
 
-const Context = React.createContext({});
+const Context: any = React.createContext({});
 export { Context };
 
 var Datastore = require("nedb");
@@ -24,6 +25,13 @@ function App() {
   const [showDiagram, setShowDiagram] = useState<boolean>(false);
   const [showForm, setShowForm] = useState<boolean>(false);
 
+  let secs = { secs: 0 };
+  makeAutoObservable(secs);
+
+  setInterval(() => {
+    secs.secs += 1;
+  }, 1000);
+
   useEffect(() => {
     startDb();
   }, []);
@@ -32,7 +40,7 @@ function App() {
     getSums();
   }, [collections]);
 
-  function addItem(item: DataItem): void {
+  function addItem(item: any): void {
     db.insert(item);
     setShowForm(false);
     startDb();
@@ -95,7 +103,7 @@ function App() {
     }
   }
 
-  function changeItem(item: CollectionItem): void {
+  function changeItem(item: any): void {
     db.update({ _id: item._id }, { $set: { collection: item.collection } });
     db.update(
       { collectionName: item.prev },
@@ -110,7 +118,7 @@ function App() {
   }
 
   const chooseMonth = (i: number) => {
-    let sum: CollectionItem[] = [];
+    let sum: any = [];
     let arr = properts.filter((item) => item.month === i);
     for (const { collection } of collections) {
       sum = [
@@ -151,30 +159,19 @@ function App() {
       <div className={"container"}>
         {showDiagram && <Redirect to={"/diagram"} />}
         <TopNavigation toggleForm={toggleForm} />
-        <Route
-          exact
-          path={"/"}
-          render={(props: ReactPropTypes) => (
-            <Main {...props} addItem={addItem} sums={sums} />
-          )}
-        />
-        <Route
-          path={"/stats"}
-          render={(props: ReactPropTypes) => (
-            <Statistics
-              {...props}
-              items={properts}
-              collections={collections}
-              setDiagram={chooseMonth}
-            />
-          )}
-        />
-        <Route
-          path={"/diagram"}
-          render={(props: ReactPropTypes) => (
-            <Diagrams {...props} item={diagramItem} />
-          )}
-        />
+        <Route exact path={"/"}>
+          <Main addItem={addItem} sums={sums} />
+        </Route>
+        <Route path={"/stats"}>
+          <Statistics
+            items={properts}
+            collections={collections}
+            setDiagram={chooseMonth}
+          />
+        </Route>
+        <Route path={"/diagram"}>
+          <Diagrams item={diagramItem} />
+        </Route>
         {form && <CollectionsList />}
       </div>
     </Context.Provider>

@@ -5,9 +5,8 @@ import PurchaseList from "./PurchaseList";
 import { CollectionItem } from "../types/common";
 
 interface MainProps {
-  addItem: (item: NewData) => void;
+  addItem: (item: any) => void;
   sums: Array<CollectionItem>;
-  deleteItem: (item: NewData) => void;
 }
 
 const Main: FunctionComponent<MainProps> = ({ addItem, sums }) => {

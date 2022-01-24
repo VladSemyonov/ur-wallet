@@ -2,9 +2,9 @@ import React, { useEffect, useState, FunctionComponent } from "react";
 import { DataItem } from "../types/common";
 
 interface CollectionFormProps {
-  props?: CollectionData;
-  addItem: (item: DataItem) => void;
-  changeItem: (item: DataItem) => void;
+  props: any;
+  addItem: (item: any) => void;
+  changeItem: (item: any) => void;
 }
 
 interface CollectionData {
@@ -24,7 +24,7 @@ const CollectionForm: FunctionComponent<CollectionFormProps> = ({
     if (props) setCollection(props);
   }, []);
 
-  function changeValue(e: React.FormEvent<HTMLInputElement>) {
+  function changeValue(e: any) {
     setCollection({ ...collectionValue, collection: e.target.value });
   }
 

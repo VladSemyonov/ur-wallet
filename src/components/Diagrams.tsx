@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Bar } from "react-chartjs-2";
 import { CollectionItem } from "../types/common";
 interface VerticalBarProps {
-  item: CollectionItem[];
+  item: any;
 }
 
 const VerticalBar: FunctionComponent<VerticalBarProps> = ({ item }) => {
@@ -11,9 +11,9 @@ const VerticalBar: FunctionComponent<VerticalBarProps> = ({ item }) => {
     datasets: [
       {
         label: "Потрачено",
-        data: item.map((i) => i.totalPrice),
-        backgroundColor: item.map((i) => "rgba(250, 250, 250, 0.8)"),
-        borderColor: item.map((i) => "rgba(255, 255, 255, 1)"),
+        data: item.map((i: any) => i.totalPrice),
+        backgroundColor: item.map(() => "rgba(250, 250, 250, 0.8)"),
+        borderColor: item.map(() => "rgba(255, 255, 255, 1)"),
         borderWidth: 0,
       },
     ],

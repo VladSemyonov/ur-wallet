@@ -86,10 +86,10 @@ const PurchaseList: FC = () => {
       <div className="some-list">
         {filteredItems.length > 0
           ? filteredItems.map((i, index) => (
-              <ListItem deleteI={deleteI} index={index} key={index} item={i} />
+              <ListItem index={index} key={index} item={i} />
             ))
           : list.map((i, index) => (
-              <ListItem deleteI={deleteI} index={index} key={index} item={i} />
+              <ListItem index={index} key={index} item={i} />
             ))}
       </div>
     </div>
